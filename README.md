@@ -1,6 +1,9 @@
 # Wendy-He-is-learning-sparkle
 Making open data social and meaningful with Semantic Web
 
+
+#data source: https://data.world/wendyhe/new-york-city-open-budget/file/Expense%20Budget.csv 
+
 PREFIX WH: <http://data.world/wendyhe/new-york-city-open-budget/Expense%20Budget.csv/Expense%20Budget#> 
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 

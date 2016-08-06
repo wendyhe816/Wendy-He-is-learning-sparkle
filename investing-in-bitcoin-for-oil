@@ -1,0 +1,19 @@
+PREFIX WHJ: <http://data.world/jajenkins/bitcoin-usdhistoricalprice/BitCoin_data.csv/BitCoin_data#> 
+PREFIX WHI: <http://data.world/wendyhe/investing-in-bitcoin-for-oil/PET_PRI_SPT_S1_M.csv/PET_PRI_SPT_S1_M#>
+
+SELECT ?Crude_oil_spot_price_Dollars_per_Barrel ?Date ?Bitcoin_24h_Average 
+
+WHERE 
+{
+   SERVICE <https://query.data.world/sparql/jajenkins/bitcoin-usdhistoricalprice>
+    {
+     ?person2 WHJ:Date ?Date .
+     ?person2 WHJ:24h_Average ?Bitcoin_24h_Average .
+    }   
+    
+    SERVICE <https://query.data.world/sparql/wendyhe/investing-in-bitcoin-for-oil>
+    {
+      ?person1 WHI:Date ?Date .
+      ?person1 WHI:Cushing_OK_WTI_Spot_Price_FOB_Dollars_per_Barrel ?Crude_oil_spot_price_Dollars_per_Barrel .
+    }
+}

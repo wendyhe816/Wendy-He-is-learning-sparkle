@@ -1,0 +1,17 @@
+PREFIX WHH: <http://data.world/health/causes-of-death-by-zip-code/rows.csv/rows#> 
+PREFIX WHJ: <http://data.world/jonloyens/irs-income-by-zip-code/IRSIncomeByZipCode_NoStateTotalsNoSmallZips.csv/IRSIncomeByZipCode_NoStateTotalsNoSmallZips#>
+SELECT ?causes_of_death ?ZIPCODE ?Avg_total_income
+WHERE 
+{
+    SERVICE <https://query.data.world/sparql/jonloyens/irs-income-by-zip-code>
+ {
+    ?person2 WHJ:ZIPCODE ?ZIPCODE .
+    ?person2 WHJ:Avg_total_income ?Avg_total_income .
+ }     
+ SERVICE <https://query.data.world/sparql/health/causes-of-death-by-zip-code>
+ {
+    ?person1 WHH:ZIP_Code ?ZIPCODE .
+    ?person1 WHH:Causes_of_Death ?causes_of_death .
+ }
+}
+

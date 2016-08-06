@@ -1,0 +1,13 @@
+PREFIX WH: <http://data.world/wendyhe/new-york-city-open-budget/Expense%20Budget.csv/Expense%20Budget#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?Budget_Code_Number ?Total_budget
+
+WHERE {
+    ?person WH:Budget_Code_Number "0020" .
+    ?person WH:Budget_Code_Number ?Budget_Code_Number .
+    ?person WH:Adopted_Budget_Amount ?Adopted_Budget_Amount . 
+    BIND( SUM(xsd:integer(?Adopted_Budget_Amount)) / 2 AS ?Total_budget) .
+}
+ORDER BY DESC(?Total_budget)
+LIMIT 1
